@@ -1,6 +1,6 @@
 import React from "react";
 
-function SearchBar() {
+function SearchBar({sort, sChange, filter, fChange}) {
   return (
     <div>
       <strong>Sort by:</strong>
@@ -9,8 +9,8 @@ function SearchBar() {
           type="radio"
           value="Alphabetically"
           name="sort"
-          checked={null}
-          onChange={null}
+          checked={sort === "Alphabetically"}
+          onChange={(e)=>sChange(e.target.value)}
         />
         Alphabetically
       </label>
@@ -19,15 +19,15 @@ function SearchBar() {
           type="radio"
           value="Price"
           name="sort"
-          checked={null}
-          onChange={null}
+          checked={sort === "Price"}
+          onChange={(e)=>sChange(e.target.value)}
         />
         Price
       </label>
       <br />
       <label>
         <strong>Filter:</strong>
-        <select onChange={null}>
+        <select value={filter}  onChange={(e)=> fChange(e.target.value)}>
           <option value="Tech">Tech</option>
           <option value="Sportswear">Sportswear</option>
           <option value="Finance">Finance</option>
@@ -36,5 +36,6 @@ function SearchBar() {
     </div>
   );
 }
+
 
 export default SearchBar;
